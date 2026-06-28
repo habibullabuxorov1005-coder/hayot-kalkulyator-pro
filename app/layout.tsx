@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hayot Kalkulyator Pro | 50+ Kalkulyator - Moliyaviy, Salomatlik, Hayot",
-  description: "50 dan ortiq bepul kalkulyatorlar: oylik soliq, kredit, investitsiya, BMI, hayot davomiyligi, nafas, yurak urishi hisoblagichlari. SEO optimallashtirilgan traffic platforma.",
-  keywords: "kalkulyator, soliq hisoblagich, kredit kalkulyatori, investitsiya, BMI, hayot davomiyligi, oylik hisoblagich, Uzbekistan",
+  title: "Hayot Kalkulyator Pro | Life Calculator Pro - 50+ Calculators",
+  description: "50+ free calculators: salary tax, loan, investment, BMI, life expectancy. SEO optimized traffic platform. 50 dan ortiq bepul kalkulyatorlar.",
+  keywords: "calculator, tax calculator, loan calculator, investment, BMI, life expectancy, salary calculator, Uzbekistan, kalkulyator, soliq, kredit",
   authors: [{ name: "Hayot Kalkulyator Pro" }],
   openGraph: {
-    title: "Hayot Kalkulyator Pro - 50+ Kalkulyator Platforma",
-    description: "Barcha hayotiy hisob-kitoblaringiz bir joyda. Moliyaviy, salomatlik va hayot kalkulyatorlari.",
+    title: "Hayot Kalkulyator Pro / Life Calculator Pro",
+    description: "50+ calculators for finance, health and life. All in one place.",
     type: "website",
     locale: "uz_UZ",
   },

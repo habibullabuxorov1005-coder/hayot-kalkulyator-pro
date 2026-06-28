@@ -1,21 +1,75 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Construction } from "lucide-react";
+import { ArrowLeft, PiggyBank, Calculator } from "lucide-react";
 import Link from "next/link";
+import AdBanner from "@/components/ads/AdBanner";
+import AffiliateBlock from "@/components/ads/AffiliateBlock";
 
-export default function ComingSoon() {
+export default function RetirementCalculator() {
+  const [result, setResult] = useState<string | null>(null);
+
+  const handleCalculate = (e: React.FormEvent) => {
+    e.preventDefault();
+    setResult("Hisoblash natijasi bu yerda ko'rsatiladi. To'liq funksionallik keyingi yangilanishlarda qo'shiladi.");
+  };
+
   return (
-    <main className="min-h-screen bg-dark-bg flex items-center justify-center">
-      <div className="text-center px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-12 max-w-md mx-auto">
-          <Construction className="h-16 w-16 text-primary-400 mx-auto mb-6" />
-          <h1 className="text-2xl font-bold text-white mb-4">Tez orada!</h1>
-          <p className="text-gray-400 mb-6">Bu kalkulyator hozircha tayyorlanmoqda.</p>
-          <Link href="/" className="btn-primary inline-flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" /> Bosh sahifa
-          </Link>
+    <main className="min-h-screen bg-dark-bg">
+      <AdBanner position="top" />
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6">
+          <ArrowLeft className="h-4 w-4" /> Bosh sahifa
+        </Link>
+
+        <motion.div initial={ opacity: 0, y: 20 } animate={ opacity: 1, y: 0 } className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary-500/10 px-4 py-2 text-sm font-medium text-primary-400 mb-4">
+            <PiggyBank className="h-4 w-4" /> Pensiya uchun jamg'arma hisobi
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+            Pensiya <span className="gradient-text">Jamg'armasi</span>
+          </h1>
+          <p className="text-gray-400 max-w-xl mx-auto">Pensiya uchun jamg'arma hisobi</p>
         </motion.div>
+
+        <motion.div initial={ opacity: 0, scale: 0.95 } animate={ opacity: 1, scale: 1 } className="glass-card p-6 mb-8">
+          <form onSubmit={handleCalculate} className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Hozirgi yoshingiz</label>
+              <input type="text" name="age" placeholder="Masalan: 30" className="input-field" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Pensiya yoshi</label>
+              <input type="text" name="retire" placeholder="Masalan: 60" className="input-field" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Oylik jamg'arma</label>
+              <input type="text" name="monthly" placeholder="Masalan: 500000" className="input-field" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Yillik daromad (%)</label>
+              <input type="text" name="rate" placeholder="Masalan: 10" className="input-field" />
+            </div>
+            <div className="flex items-end">
+              <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
+                <Calculator className="h-4 w-4" /> Hisoblash
+              </button>
+            </div>
+          </form>
+        </motion.div>
+
+        <AdBanner position="in-content" />
+
+        {result && (
+          <motion.div initial={ opacity: 0, y: 20 } animate={ opacity: 1, y: 0 } className="glass-card p-6 mb-8">
+            <h3 className="text-lg font-semibold text-white mb-2">Natija</h3>
+            <p className="text-gray-400">{result}</p>
+          </motion.div>
+        )}
+
+        <AffiliateBlock />
+        <AdBanner position="bottom" />
       </div>
     </main>
   );
